@@ -5,7 +5,7 @@ async function initWorkout() {
   if (lastWorkout) {
     console.log(document);
     document
-      .querySelector("a[href='/exercise?']")
+      .querySelector("#continue-btn")
       .setAttribute("href", `/exercise?id=${lastWorkout._id}`);
 
     const workoutSummary = {

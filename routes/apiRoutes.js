@@ -12,9 +12,10 @@ router.get("/api/workouts", (req, res) => {
     });
 });
 
-router.post("/api/workouts:id", (req, res) => {
-  Workout.find({ _id: req.params.id })
-    .sort({ day: -1 })
+router.post("");
+
+router.put("/api/workouts/:id", (req, res) => {
+  Workout.findByIdAndUpdate(req.params.id, { $push: { exercises: req.body } })
     .then((dbWorkout) => {
       res.json(dbWorkout);
     })
@@ -32,4 +33,13 @@ router.get("/api/workouts/range", (req, res) => {
       res.status(400).json(err);
     });
 });
+
+// Workout.find({ _id })
+// .sort({ day: -1 })
+// .then((dbWorkout) => {
+//   res.json(dbWorkout);
+// })
+// .catch((err) => {
+//   res.status(400).json(err);
+// });
 module.exports = router;
